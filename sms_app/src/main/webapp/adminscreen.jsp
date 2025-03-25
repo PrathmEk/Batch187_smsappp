@@ -31,7 +31,22 @@
    background-size: cover; 
    background-repeat: no-repeat; 
    } 
- </style>  
+ </style> 
+ 
+ <script type="text/javascript">
+   function removeStudent(){
+	   document.fn.action="remove";
+	   document.fn.submit();
+   }
+   function fees(){
+	   document.fn.action="fees";
+	   document.fn.submit();
+   }
+   function shiftbatch(){
+	   document.fn.action="shiftbatch";
+	   document.fn.submit();
+   }
+ </script> 
 </head> 
 <body> 
    <div class="card">
@@ -174,9 +189,9 @@ checked />
   
      <h1 class="text-center">Student Details..!</h1> 
      
-      <h1 class="text-center ">Student Details..!</h1> 
+       
      <div class="text-center w-100"> 
-     <form action="search" class="w-100"> 
+     <form action="search" name="fn" class="w-100"> 
       <select class="select form-control-sm border border-primary" 
 name="batchNumber"> 
                     <option value="#" slected>Select Batch Number</option>
@@ -187,7 +202,7 @@ name="batchNumber">
                     
                   </select> 
                 <button class="btn btn-outline-primary mb-1">Search</button>                 
-           </form> 
+           
    <marquee> 
         <h1 style="color: red;"> 
            ${message } 
@@ -206,7 +221,8 @@ small">
            <th>Course Name</th> 
            <th>Bath No</th> 
            <th>Mode</th> 
-           <th>Fess Recived</th> 
+           <th>Fess Recived</th>
+           <th>Select</th> 
            <th>Actions</th> 
          </tr> 
         </thead> 
@@ -222,16 +238,17 @@ small">
            <td>${s.batchNumber}</td> 
            <td>${s.batchMode}</td> 
            <td>${s.feesPaid}</td> 
+           <td><input type="radio" name="rollno" value="${s.rollno}"></td>
            <td> 
   
            <div class="btn-group btn-group-sm" role="group" 
 aria-label="..."> 
-<button class="btn btn-outline-success">Pay-
-Fees</button>
-           <button class="btn btn-outline-primary">Shift
-Batch</button> 
-           <button class="btn btn-outline-
-danger">Remove</button> 
+<button class="btn btn-outline-success" onclick="fees()">Pay Fees</button>
+
+           <button class="btn btn-outline-primary" onclick="shiftbatch()">Shift Batch</button> 
+
+           <button class="btn btn-outline-danger"  onclick="removeStudent()">Remove</button> 
+
             
            </div> 
              
@@ -242,7 +259,8 @@ danger">Remove</button>
          
         </tbody> 
       
-     </table> 
+     </table>
+     </form>  
  </section> 
   
  </section> 
